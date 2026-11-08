@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rbacpath"
+version = "1.0.0"
+description = "Offline Kubernetes RBAC privilege-escalation path finder - every path from a subject to cluster-admin, with the exact rule that enables each hop."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "mehulpatel23b-pixel" }]
+keywords = [
+  "kubernetes",
+  "rbac",
+  "security",
+  "privilege-escalation",
+  "blue-team",
+  "cloud-native",
+  "k8s",
+  "audit",
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Console",
+  "Intended Audience :: System Administrators",
+  "Intended Audience :: Information Technology",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Security",
+  "Topic :: System :: Systems Administration",
+]
+dependencies = []
+
+[project.optional-dependencies]
+yaml = ["PyYAML>=6.0"]
+dev = ["pytest>=7.4", "PyYAML>=6.0"]
+
+[project.scripts]
+rbacpath = "rbacpath.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/mehulpatel23b-pixel/rbacpath"
+Issues = "https://github.com/mehulpatel23b-pixel/rbacpath/issues"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = ["ignore::DeprecationWarning"]
